@@ -46,7 +46,11 @@ body::before{
 h1{
   font-size:34px;
   margin-bottom:18px;
-  text-shadow:0 0 18px #60eaff;
+  color:#FFD45C;
+  text-shadow:
+    0 0 12px #FFD45C,
+    0 0 24px #FFB700,
+    0 0 40px #FFB700;
 }
 
 .current-time{
@@ -65,7 +69,8 @@ h1{
 .status{
   font-size:30px;
   font-weight:bold;
-  color:#28eaff;
+  color:#FFFFFF;
+  text-shadow:0 0 10px rgba(255,255,255,.4);
   margin-bottom:10px;
 }
 
@@ -79,8 +84,8 @@ h1{
 .next-time{
   font-size:20px;
   margin-bottom:20px;
-  color:#40e8ff;
-  text-shadow:0 0 10px #40e8ff;
+  color:#FFFFFF;
+  text-shadow:0 0 10px rgba(255,255,255,.4);
 }
 
 #nextHourText{
@@ -148,7 +153,7 @@ h1{
 }
 
 .schedule h2{
-  color:#28eaff;
+  color:#FFFFFF;
   margin-bottom:12px;
 }
 
@@ -192,10 +197,10 @@ h1{
     <div class="countdown" id="countdown">00:00:00</div>
   </div>
 
-  <div class="next-time" id="nextTime">次回探索可能時刻 --:--</div>
+  <div class="next-time" id="nextTime">次回探索可能時間 --:--</div>
 
   <div class="schedule">
-    <h2>探索可能時刻一覧</h2>
+    <h2>探索可能時間一覧</h2>
     <div class="time-list" id="timeList"></div>
   </div>
 
@@ -234,7 +239,6 @@ function createTimeList(activeHour){
   spawnHours.forEach(hour=>{
     const item = document.createElement("div");
     item.className = "time-item";
-
     item.textContent = pad(hour) + ":00";
 
     if(hour === activeHour){
@@ -313,7 +317,7 @@ function updateTimer(){
   }
 
   document.getElementById("nextTime").innerHTML =
-    '次回探索可能時刻<br><span id="nextHourText">' +
+    '次回探索可能時間<br><span id="nextHourText">' +
     pad(nextHour) +
     ':00</span>';
 
