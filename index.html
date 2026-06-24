@@ -35,6 +35,28 @@ body::before{
   z-index:-1;
 }
 
+#bgmBtn{
+  position:fixed;
+  top:14px;
+  right:14px;
+  z-index:999;
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid rgba(40,234,255,.8);
+  background:rgba(5,15,30,.78);
+  color:#28EAFF;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:0 0 14px rgba(40,234,255,.45);
+  backdrop-filter:blur(4px);
+}
+
+#bgmBtn.playing{
+  color:#00ff99;
+  border-color:#00ff99;
+  box-shadow:0 0 14px rgba(0,255,153,.6);
+}
+
 .container{
   width:100%;
   max-width:520px;
@@ -217,6 +239,12 @@ h1{
 
 <body>
 
+<audio id="bgm" loop preload="auto">
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
+<button id="bgmBtn">🔊 BGM ON</button>
+
 <div class="container">
   <h1>探索時間タイマー</h1>
 
@@ -257,6 +285,39 @@ const timeColors = {
   17: "#FF9A3C",
   21: "#B57CFF"
 };
+
+const bgm = document.getElementById("bgm");
+const bgmBtn = document.getElementById("bgmBtn");
+
+bgm.volume = 0.18;
+
+let bgmPlaying = false;
+
+bgmBtn.addEventListener("click", async function(){
+  try{
+    if(!bgmPlaying){
+      await bgm.play();
+      bgmPlaying = true;
+      bgmBtn.textContent = "🔇 BGM OFF";
+      bgmBtn.classList.add("playing");
+      localStorage.setItem("bgmPlaying","true");
+    }else{
+      bgm.pause();
+      bgmPlaying = false;
+      bgmBtn.textContent = "🔊 BGM ON";
+      bgmBtn.classList.remove("playing");
+      localStorage.setItem("bgmPlaying","false");
+    }
+  }catch(e){
+    bgmBtn.textContent = "▶ BGM再生";
+  }
+});
+
+window.addEventListener("load", function(){
+  if(localStorage.getItem("bgmPlaying") === "true"){
+    bgmBtn.textContent = "▶ BGM再生";
+  }
+});
 
 function pad(num){
   return String(num).padStart(2,"0");
