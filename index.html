@@ -3,214 +3,244 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>エントロピー探索タイマー</title>
+<title>探索時間タイマー</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#0f172a,#1e293b);
-    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-    color:white;
-    padding:20px;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  background:
+    radial-gradient(circle at top,#263b5e,#0b1020 65%);
+  color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
 }
 
 .container{
-    width:100%;
-    max-width:500px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
-    border-radius:24px;
-    padding:30px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  width:100%;
+  max-width:520px;
+  padding:28px;
+  border-radius:28px;
+  background:rgba(20,30,50,.88);
+  border:1px solid rgba(120,180,255,.35);
+  box-shadow:
+    0 0 25px rgba(70,140,255,.25),
+    inset 0 0 20px rgba(255,255,255,.04);
+  text-align:center;
 }
 
 h1{
-    font-size:30px;
-    margin-bottom:15px;
+  font-size:34px;
+  margin-bottom:18px;
+  letter-spacing:1px;
 }
 
 .current-time{
-    font-size:18px;
-    margin-bottom:25px;
-    opacity:0.9;
+  font-size:18px;
+  opacity:.9;
+  margin-bottom:22px;
 }
 
 .status{
-    font-size:34px;
-    font-weight:bold;
-    margin-bottom:15px;
-}
-
-.ready{
-    color:#FFD700;
-    text-shadow:
-        0 0 10px #FFD700,
-        0 0 20px #FFD700;
-    animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-    50%{
-        transform:scale(1.05);
-    }
+  font-size:32px;
+  font-weight:bold;
+  margin-bottom:12px;
 }
 
 .countdown{
-    font-size:60px;
-    font-weight:bold;
-    margin-bottom:20px;
+  font-size:64px;
+  font-weight:900;
+  margin-bottom:18px;
+  text-shadow:0 0 18px rgba(255,255,255,.25);
 }
 
 .next-time{
-    font-size:20px;
-    margin-bottom:20px;
+  font-size:22px;
+  margin-bottom:20px;
+}
+
+.warning{
+  color:#ffd84d;
+  text-shadow:0 0 18px #ffd84d;
+}
+
+.danger{
+  color:#ff5555;
+  text-shadow:0 0 18px #ff5555;
+  animation:blink .8s infinite;
+}
+
+.ready{
+  color:#00ff99;
+  text-shadow:
+    0 0 15px #00ff99,
+    0 0 35px #00ff99;
+  animation:pulse .8s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:.35}
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.06)}
 }
 
 .schedule{
-    text-align:left;
-    background:rgba(255,255,255,0.08);
-    border-radius:15px;
-    padding:15px;
-    margin-top:20px;
+  margin-top:20px;
+  padding:18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.08);
+  text-align:left;
 }
 
 .schedule h2{
-    font-size:18px;
-    margin-bottom:10px;
+  font-size:20px;
+  margin-bottom:12px;
 }
 
-.schedule ul{
-    list-style:none;
+.time-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
-.schedule li{
-    padding:4px 0;
+.time-item{
+  padding:10px;
+  border-radius:12px;
+  background:rgba(255,255,255,.08);
+  text-align:center;
+  font-size:20px;
+}
+
+.time-item.active{
+  background:rgba(0,255,153,.18);
+  color:#00ff99;
+  box-shadow:0 0 15px rgba(0,255,153,.45);
+  font-weight:bold;
+}
+
+.note{
+  margin-top:18px;
+  font-size:14px;
+  opacity:.75;
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
+  <h1>探索時間タイマー</h1>
 
-    <h1>エントロピー探索タイマー</h1>
+  <div class="current-time" id="currentTime">現在時刻 --:--:--</div>
 
-    <div class="current-time" id="currentTime">
-        現在時刻
-    </div>
+  <div class="status" id="status">計算中...</div>
 
-    <div class="status" id="status">
-        計算中...
-    </div>
+  <div class="countdown" id="countdown">00:00:00</div>
 
-    <div class="countdown" id="countdown">
-        00:00:00
-    </div>
+  <div class="next-time" id="nextTime">次回探索可能時刻 --:--</div>
 
-    <div class="next-time" id="nextTime">
-        次回探索可能時刻
-    </div>
+  <div class="schedule">
+    <h2>探索可能時刻</h2>
+    <div class="time-list" id="timeList"></div>
+  </div>
 
-    <div class="schedule">
-        <h2>探索可能時刻</h2>
-        <ul>
-            <li>01:00</li>
-            <li>05:00</li>
-            <li>09:00</li>
-            <li>13:00</li>
-            <li>17:00</li>
-            <li>21:00</li>
-        </ul>
-    </div>
-
+  <div class="note">残り5分で黄色、残り1分で赤色、時間になると探索可能表示になります。</div>
 </div>
 
 <script>
-
 const spawnHours = [1,5,9,13,17,21];
 
 function pad(num){
-    return String(num).padStart(2,"0");
+  return String(num).padStart(2,"0");
+}
+
+function createTimeList(activeHour){
+  const list = document.getElementById("timeList");
+  list.innerHTML = "";
+
+  spawnHours.forEach(hour=>{
+    const item = document.createElement("div");
+    item.className = "time-item";
+    if(hour === activeHour){
+      item.classList.add("active");
+    }
+    item.textContent = pad(hour) + ":00";
+    list.appendChild(item);
+  });
 }
 
 function updateTimer(){
+  const now = new Date();
 
-    const now = new Date();
+  document.getElementById("currentTime").textContent =
+    "現在時刻 " +
+    pad(now.getHours()) + ":" +
+    pad(now.getMinutes()) + ":" +
+    pad(now.getSeconds());
 
-    document.getElementById("currentTime").textContent =
-        "現在時刻 " +
-        pad(now.getHours()) + ":" +
-        pad(now.getMinutes()) + ":" +
-        pad(now.getSeconds());
+  let nextTime = null;
 
-    let nextTime = null;
+  for(const hour of spawnHours){
+    const candidate = new Date(now);
+    candidate.setHours(hour,0,0,0);
 
-    for(const hour of spawnHours){
-
-        const candidate = new Date(now);
-
-        candidate.setHours(hour,0,0,0);
-
-        if(candidate > now){
-            nextTime = candidate;
-            break;
-        }
+    if(candidate > now){
+      nextTime = candidate;
+      break;
     }
+  }
 
-    if(!nextTime){
-        nextTime = new Date(now);
-        nextTime.setDate(nextTime.getDate()+1);
-        nextTime.setHours(1,0,0,0);
+  if(!nextTime){
+    nextTime = new Date(now);
+    nextTime.setDate(nextTime.getDate()+1);
+    nextTime.setHours(1,0,0,0);
+  }
+
+  const diff = nextTime - now;
+  const totalSeconds = Math.floor(diff / 1000);
+
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  const status = document.getElementById("status");
+  const countdown = document.getElementById("countdown");
+
+  status.className = "status";
+  countdown.className = "countdown";
+
+  if(totalSeconds <= 0){
+    status.textContent = "★★★★★ 探索可能！ ★★★★★";
+    status.classList.add("ready");
+    countdown.textContent = "00:00:00";
+  }else{
+    status.textContent = "探索可能まで";
+    countdown.textContent =
+      pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
+
+    if(totalSeconds <= 60){
+      countdown.classList.add("danger");
+      status.classList.add("danger");
+    }else if(totalSeconds <= 300){
+      countdown.classList.add("warning");
+      status.classList.add("warning");
     }
+  }
 
-    const diff = nextTime - now;
+  document.getElementById("nextTime").textContent =
+    "次回探索可能時刻 " +
+    pad(nextTime.getHours()) + ":00";
 
-    const hours =
-        Math.floor(diff / 1000 / 60 / 60);
-
-    const minutes =
-        Math.floor((diff / 1000 / 60) % 60);
-
-    const seconds =
-        Math.floor((diff / 1000) % 60);
-
-    document.getElementById("countdown").textContent =
-        pad(hours) + ":" +
-        pad(minutes) + ":" +
-        pad(seconds);
-
-    document.getElementById("nextTime").textContent =
-        "次回探索可能時刻 " +
-        pad(nextTime.getHours()) +
-        ":" +
-        pad(nextTime.getMinutes());
-
-    const status = document.getElementById("status");
-
-    if(hours === 0 && minutes === 0 && seconds === 0){
-        status.textContent = "探索可能！";
-        status.classList.add("ready");
-    }else{
-        status.textContent = "探索可能まで";
-        status.classList.remove("ready");
-    }
+  createTimeList(nextTime.getHours());
 }
 
 updateTimer();
 setInterval(updateTimer,1000);
-
 </script>
-
 </body>
 </html>
