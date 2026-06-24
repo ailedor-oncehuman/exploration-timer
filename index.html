@@ -16,10 +16,6 @@
 
 body{
   min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
   color:#fff;
   font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
   background:#050914;
@@ -29,10 +25,11 @@ body{
 #bgLayer{
   position:fixed;
   inset:0;
-  z-index:-2;
-  background-size:contain;
+  z-index:-3;
+  background-size:cover;
   background-position:center top;
   background-repeat:no-repeat;
+  filter:brightness(.75) contrast(1.08) saturate(1.15);
   transition:background-image 1s ease;
   animation:bgZoom 80s ease-in-out infinite alternate;
 }
@@ -46,8 +43,17 @@ body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.22);
-  z-index:-1;
+  z-index:-2;
+  background:
+    linear-gradient(to bottom,rgba(0,0,0,.1),rgba(0,8,18,.35),rgba(0,8,18,.95)),
+    radial-gradient(circle at top,rgba(0,234,255,.18),transparent 45%);
+}
+
+.app{
+  width:100%;
+  max-width:520px;
+  margin:0 auto;
+  padding:30px 18px 38px;
 }
 
 .sound-panel{
@@ -63,96 +69,111 @@ body::before{
 
 #bgmBtn{
   padding:10px 14px;
-  border-radius:12px;
-  border:1px solid rgba(40,234,255,.8);
-  background:rgba(5,15,30,.78);
+  border-radius:14px;
+  border:1px solid rgba(40,234,255,.9);
+  background:rgba(4,16,28,.82);
   color:#28EAFF;
   font-size:14px;
   font-weight:900;
-  box-shadow:0 0 14px rgba(40,234,255,.45);
-  backdrop-filter:blur(4px);
+  box-shadow:0 0 16px rgba(40,234,255,.55),inset 0 0 14px rgba(40,234,255,.12);
+  backdrop-filter:blur(5px);
 }
 
 #bgmBtn.playing{
   color:#00ff99;
   border-color:#00ff99;
-  box-shadow:0 0 14px rgba(0,255,153,.6);
+  box-shadow:0 0 16px rgba(0,255,153,.65),inset 0 0 14px rgba(0,255,153,.14);
 }
 
 .volume-box{
-  width:145px;
+  width:150px;
   padding:8px;
-  border-radius:12px;
-  background:rgba(5,15,30,.78);
-  border:1px solid rgba(40,234,255,.35);
+  border-radius:14px;
+  background:rgba(4,16,28,.82);
+  border:1px solid rgba(40,234,255,.45);
   display:none;
+  box-shadow:0 0 16px rgba(40,234,255,.3);
 }
 
-.sound-panel.open .volume-box{
-  display:block;
-}
+.sound-panel.open .volume-box{display:block}
 
 .bgm-label{
   font-size:12px;
-  font-weight:800;
+  font-weight:900;
   color:#fff;
-  opacity:.9;
+  opacity:.95;
   margin-bottom:4px;
   text-align:center;
 }
 
-#volumeSlider{
-  width:100%;
-}
+#volumeSlider{width:100%}
 
-.container{
-  width:100%;
-  max-width:520px;
-  padding:28px 20px 50px;
-  border-radius:22px;
+.header{
+  padding-top:34px;
+  margin-bottom:26px;
   text-align:center;
-  background:rgba(5,15,30,.62);
-  border:1px solid rgba(0,220,255,.65);
-  box-shadow:0 0 28px rgba(0,220,255,.45);
-  backdrop-filter:blur(4px);
 }
 
 .brand{
-  font-size:18px;
+  font-size:20px;
   font-weight:900;
-  letter-spacing:5px;
-  color:#FFFFFF;
-  margin-bottom:8px;
-  text-shadow:0 0 8px #28EAFF,0 0 18px #00AFFF;
+  letter-spacing:8px;
+  color:#28EAFF;
+  text-shadow:0 0 8px #28EAFF,0 0 18px #00AFFF,0 0 34px #00AFFF;
+  margin-bottom:4px;
 }
 
-h1{
-  font-size:34px;
+.brand-main{
+  font-size:48px;
+  font-weight:900;
+  letter-spacing:5px;
+  line-height:1;
+  color:#28EAFF;
+  text-shadow:0 0 10px #28EAFF,0 0 24px #00D9FF,0 0 46px #00AFFF;
+}
+
+.title{
+  margin-top:14px;
+  font-size:42px;
   font-weight:900;
   letter-spacing:2px;
-  margin-bottom:18px;
-  color:#28EAFF;
-  text-shadow:0 0 4px #28EAFF,0 0 10px #28EAFF,0 0 18px #00AFFF;
+  color:#ff2fb3;
+  text-shadow:0 0 8px #ff2fb3,0 0 22px #ff2fb3,0 0 42px #ff008c;
+}
+
+.card{
+  margin-top:22px;
+  padding:22px 18px;
+  border-radius:20px;
+  background:rgba(0,10,20,.62);
+  border:1px solid rgba(40,234,255,.75);
+  box-shadow:0 0 22px rgba(40,234,255,.48),inset 0 0 22px rgba(40,234,255,.08);
+  backdrop-filter:blur(5px);
 }
 
 .current-time{
   font-size:22px;
-  font-weight:700;
-  margin-bottom:20px;
-  text-shadow:0 0 8px rgba(255,255,255,.35);
+  font-weight:900;
+  margin-bottom:18px;
+  color:#fff;
+  text-shadow:0 0 10px rgba(255,255,255,.5);
+}
+
+.current-time span{
+  color:#28EAFF;
+  margin-right:8px;
 }
 
 .timer-box{
-  padding:22px 14px;
+  padding:24px 14px 22px;
   border-radius:18px;
   margin-bottom:20px;
-  border:1px solid rgba(255,255,255,.22);
-  box-shadow:inset 0 0 24px rgba(255,255,255,.08),0 0 24px rgba(0,0,0,.35);
+  background:rgba(0,20,28,.45);
 }
 
 .ready-panel{
-  border-color:#00ff99 !important;
-  box-shadow:0 0 12px #00ff99,0 0 30px #00ff99,inset 0 0 20px rgba(0,255,153,.25);
+  border:1px solid #00ff99 !important;
+  box-shadow:0 0 16px #00ff99,0 0 34px #00ff99,inset 0 0 20px rgba(0,255,153,.25);
   animation:panelPulse 1s infinite;
 }
 
@@ -161,28 +182,29 @@ h1{
 }
 
 .status{
-  font-size:32px;
+  font-size:34px;
   font-weight:900;
-  color:#FFFFFF;
-  text-shadow:0 0 10px rgba(255,255,255,.45);
+  color:#28EAFF;
+  text-shadow:0 0 10px #28EAFF,0 0 22px #00AFFF;
   margin-bottom:10px;
   letter-spacing:1px;
 }
 
 .countdown{
-  font-size:64px;
+  font-size:68px;
   font-weight:900;
-  color:#ffd45c;
+  color:#ffd84d;
   letter-spacing:2px;
-  text-shadow:0 0 12px #FFD45C,0 0 24px #FFB700,0 0 38px #FFB700;
+  line-height:1;
+  text-shadow:0 0 10px #FFD45C,0 0 24px #FFB700,0 0 46px #FFB700;
 }
 
 .progress-wrap{
-  margin:18px 0 20px;
-  height:16px;
+  margin:20px 0 10px;
+  height:18px;
   border-radius:999px;
   background:rgba(255,255,255,.13);
-  border:1px solid rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.26);
   overflow:hidden;
 }
 
@@ -196,95 +218,88 @@ h1{
 }
 
 .progress-text{
-  margin-top:6px;
-  font-size:14px;
-  font-weight:700;
-  opacity:.9;
+  font-size:18px;
+  font-weight:900;
+  color:#00ff99;
+  text-shadow:0 0 10px #00ff99;
+  margin-bottom:16px;
 }
 
 .next-time{
-  font-size:24px;
-  font-weight:700;
-  margin-bottom:20px;
-  color:#FFFFFF;
-  text-shadow:0 0 10px rgba(255,255,255,.4);
+  font-size:28px;
+  font-weight:900;
+  color:#28EAFF;
+  text-shadow:0 0 10px #28EAFF,0 0 22px #00AFFF;
+  margin-top:10px;
 }
 
 #nextHourText{
-  font-size:44px;
-  font-weight:900;
   display:block;
   margin-top:8px;
-  letter-spacing:1px;
+  font-size:64px;
+  font-weight:900;
+  letter-spacing:2px;
 }
 
-.bg-1 .timer-box{background:linear-gradient(135deg,rgba(7,18,50,.88),rgba(12,40,82,.72))}
-.bg-5 .timer-box{background:linear-gradient(135deg,rgba(96,38,18,.82),rgba(255,122,45,.42))}
-.bg-9 .timer-box{background:linear-gradient(135deg,rgba(12,68,102,.82),rgba(60,180,255,.35))}
-.bg-13 .timer-box{background:linear-gradient(135deg,rgba(13,88,128,.78),rgba(255,205,80,.32))}
-.bg-17 .timer-box{background:linear-gradient(135deg,rgba(86,34,17,.86),rgba(255,119,35,.42))}
-.bg-21 .timer-box{background:linear-gradient(135deg,rgba(5,12,36,.9),rgba(20,42,78,.72))}
-
-.warning{
-  color:#ffd84d !important;
-  text-shadow:0 0 18px #ffd84d;
+#remainingText{
+  margin-top:6px;
+  font-size:24px;
+  font-weight:900;
+  color:#fff;
+  text-shadow:0 0 10px rgba(255,255,255,.5);
 }
 
-.danger{
-  color:#ff4d4d !important;
-  text-shadow:0 0 18px #ff4d4d;
-  animation:blink .8s infinite;
+#remainingText span{
+  color:#ffd84d;
+  text-shadow:0 0 12px #FFD45C;
 }
-
-.ready{
-  color:#00ff99 !important;
-  text-shadow:0 0 18px #00ff99,0 0 38px #00ff99;
-  animation:pulse .8s infinite;
-}
-
-@keyframes blink{50%{opacity:.35}}
-@keyframes pulse{50%{transform:scale(1.06)}}
 
 .schedule{
-  margin-top:18px;
-  padding:16px;
-  border-radius:14px;
-  background:rgba(0,10,24,.5);
-  border:1px solid rgba(0,220,255,.4);
+  margin-top:22px;
+  padding:18px;
+  border-radius:20px;
+  background:rgba(0,10,20,.58);
+  border:1px solid rgba(40,234,255,.6);
+  box-shadow:0 0 18px rgba(40,234,255,.32),inset 0 0 18px rgba(40,234,255,.06);
 }
 
 .schedule h2{
-  color:#FFFFFF;
-  font-size:28px;
+  color:#28EAFF;
+  font-size:30px;
   font-weight:900;
-  margin-bottom:14px;
+  margin-bottom:18px;
   letter-spacing:1px;
-  text-shadow:0 0 10px rgba(255,255,255,.35);
+  text-shadow:0 0 10px #28EAFF,0 0 22px #00AFFF;
 }
 
 .time-list{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:10px;
+  gap:12px;
 }
 
 .time-item{
-  padding:12px 6px;
-  border-radius:10px;
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.24);
-  font-size:20px;
-  font-weight:700;
+  padding:14px 6px;
+  border-radius:12px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.22);
+  font-size:22px;
+  font-weight:900;
+  color:#fff;
+  box-shadow:inset 0 0 14px rgba(255,255,255,.05);
 }
 
-.time-item.active{
-  font-weight:900;
-}
+.time-item.active{font-weight:900}
 
 .note{
-  margin-top:16px;
-  font-size:14px;
-  opacity:.85;
+  margin-top:18px;
+  padding:16px;
+  border-radius:16px;
+  font-size:15px;
+  line-height:1.7;
+  opacity:.95;
+  background:rgba(0,10,20,.58);
+  border:1px solid rgba(40,234,255,.45);
 }
 
 .ready-overlay{
@@ -304,16 +319,33 @@ h1{
 }
 
 .ready-card{
-  padding:28px 34px;
+  padding:30px 36px;
   border-radius:22px;
   background:rgba(0,30,20,.9);
   border:2px solid #00ff99;
   color:#00ff99;
-  font-size:36px;
+  font-size:38px;
   font-weight:900;
   text-align:center;
   box-shadow:0 0 25px #00ff99,0 0 60px rgba(0,255,153,.65);
   text-shadow:0 0 18px #00ff99;
+}
+
+.warning{
+  color:#ffd84d !important;
+  text-shadow:0 0 18px #ffd84d !important;
+}
+
+.danger{
+  color:#ff4d4d !important;
+  text-shadow:0 0 18px #ff4d4d !important;
+  animation:blink .8s infinite;
+}
+
+.ready{
+  color:#00ff99 !important;
+  text-shadow:0 0 18px #00ff99,0 0 38px #00ff99 !important;
+  animation:pulse .8s infinite;
 }
 
 @keyframes overlayFade{
@@ -321,6 +353,17 @@ h1{
   15%{opacity:1}
   80%{opacity:1}
   100%{opacity:0}
+}
+
+@keyframes blink{50%{opacity:.35}}
+@keyframes pulse{50%{transform:scale(1.06)}}
+
+@media(max-width:420px){
+  .brand-main{font-size:42px}
+  .title{font-size:36px}
+  .countdown{font-size:58px}
+  #nextHourText{font-size:56px}
+  .sound-panel{top:10px;right:10px}
 }
 </style>
 </head>
@@ -345,30 +388,38 @@ h1{
   <div class="ready-card">探索可能！</div>
 </div>
 
-<div class="container">
-  <div class="brand">Once Human</div>
-  <h1>探索時間タイマー</h1>
+<div class="app">
 
-  <div class="current-time" id="currentTime">現在時刻 --:--:--</div>
-
-  <div class="timer-box" id="timerBox">
-    <div class="status" id="status">探索可能まで</div>
-    <div class="countdown" id="countdown">00:00:00</div>
+  <div class="header">
+    <div class="brand">ONCE</div>
+    <div class="brand-main">HUMAN</div>
+    <div class="title">探索タイマー</div>
   </div>
 
-  <div class="progress-wrap">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-  <div class="progress-text" id="progressText">進捗 0%</div>
+  <div class="card">
+    <div class="current-time" id="currentTime">現在時刻 --:--:--</div>
 
-  <div class="next-time" id="nextTime">次回探索可能時間 --:--</div>
+    <div class="timer-box" id="timerBox">
+      <div class="status" id="status">探索可能まで</div>
+      <div class="countdown" id="countdown">00:00:00</div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="progress-text" id="progressText">進捗 0%</div>
+
+    <div class="next-time" id="nextTime">次回探索可能時間 --:--</div>
+    <div id="remainingText">あと <span>--分--秒</span></div>
+  </div>
 
   <div class="schedule">
     <h2>探索可能時間一覧</h2>
     <div class="time-list" id="timeList"></div>
   </div>
 
-  <div class="note">60秒前・30秒前・10秒前にアラート音、時間になると通知音が鳴ります。</div>
+  <div class="note">🔊 60秒前・30秒前・10秒前に警告音、時間になると通知音が鳴ります。</div>
+
 </div>
 
 <script>
@@ -388,8 +439,8 @@ const timeColors = {
   1:  "#4DA6FF",
   5:  "#FF7AD9",
   9:  "#40E8FF",
-  13: "#FFD45C",
-  17: "#FF9A3C",
+  13: "#F4FF35",
+  17: "#FFB000",
   21: "#B57CFF"
 };
 
@@ -573,8 +624,8 @@ function updateTimer(){
     lastTargetKey = targetKey;
   }
 
-  document.getElementById("currentTime").textContent =
-    "現在時刻 " + pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds());
+  document.getElementById("currentTime").innerHTML =
+    "<span>現在時刻</span> " + pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds());
 
   const status = document.getElementById("status");
   const countdown = document.getElementById("countdown");
@@ -584,7 +635,6 @@ function updateTimer(){
   countdown.className = "countdown";
   timerBox.classList.remove("ready-panel");
 
-  document.body.className = "bg-" + displayHour;
   document.getElementById("bgLayer").style.backgroundImage =
     "url('" + backgrounds[displayHour] + "')";
 
@@ -605,6 +655,7 @@ function updateTimer(){
 
     document.getElementById("progressBar").style.width = "100%";
     document.getElementById("progressText").textContent = "進捗 100%";
+    document.getElementById("remainingText").innerHTML = "探索可能中";
     updateProgressColor(100);
 
   }else{
@@ -634,9 +685,13 @@ function updateTimer(){
     const period = next - last;
     const elapsed = now - last;
     const progress = Math.max(0, Math.min(100, Math.floor((elapsed / period) * 100)));
+
     document.getElementById("progressBar").style.width = progress + "%";
     document.getElementById("progressText").textContent = "進捗 " + progress + "%";
     updateProgressColor(progress);
+
+    document.getElementById("remainingText").innerHTML =
+      "あと <span>" + pad(hours) + "時間" + pad(minutes) + "分" + pad(seconds) + "秒</span>";
   }
 
   document.getElementById("nextTime").innerHTML =
