@@ -6,11 +6,7 @@
 <title>探索時間タイマー</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
   min-height:100vh;
@@ -81,8 +77,17 @@ h1{
 }
 
 .next-time{
-  font-size:22px;
+  font-size:20px;
   margin-bottom:20px;
+  color:#40e8ff;
+  text-shadow:0 0 10px #40e8ff;
+}
+
+#nextHourText{
+  font-size:42px;
+  font-weight:900;
+  display:block;
+  margin-top:8px;
 }
 
 .bg-1 .timer-box{
@@ -162,7 +167,6 @@ h1{
 }
 
 .time-item.active{
-  color:#00eaff;
   border-color:#00eaff;
   box-shadow:0 0 16px rgba(0,234,255,.7);
   font-weight:bold;
@@ -183,7 +187,7 @@ h1{
 
   <div class="current-time" id="currentTime">現在時刻 --:--:--</div>
 
-  <div class="timer-box" id="timerBox">
+  <div class="timer-box">
     <div class="status" id="status">探索可能まで</div>
     <div class="countdown" id="countdown">00:00:00</div>
   </div>
@@ -210,6 +214,15 @@ const backgrounds = {
   21: "IMG_7437.jpeg"
 };
 
+const timeColors = {
+  1:  "#4DA6FF",
+  5:  "#FF7AD9",
+  9:  "#40E8FF",
+  13: "#FFD45C",
+  17: "#FF9A3C",
+  21: "#B57CFF"
+};
+
 function pad(num){
   return String(num).padStart(2,"0");
 }
@@ -222,11 +235,16 @@ function createTimeList(activeHour){
     const item = document.createElement("div");
     item.className = "time-item";
 
+    item.textContent = pad(hour) + ":00";
+
     if(hour === activeHour){
       item.classList.add("active");
+      item.style.color = timeColors[hour];
+      item.style.textShadow = "0 0 12px " + timeColors[hour];
+      item.style.borderColor = timeColors[hour];
+      item.style.boxShadow = "0 0 16px " + timeColors[hour];
     }
 
-    item.textContent = pad(hour) + ":00";
     list.appendChild(item);
   });
 }
@@ -294,8 +312,14 @@ function updateTimer(){
     }
   }
 
-  document.getElementById("nextTime").textContent =
-    "次回探索可能時刻 " + pad(nextHour) + ":00";
+  document.getElementById("nextTime").innerHTML =
+    '次回探索可能時刻<br><span id="nextHourText">' +
+    pad(nextHour) +
+    ':00</span>';
+
+  const nextHourText = document.getElementById("nextHourText");
+  nextHourText.style.color = timeColors[nextHour];
+  nextHourText.style.textShadow = "0 0 15px " + timeColors[nextHour];
 
   createTimeList(nextHour);
 
