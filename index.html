@@ -17,14 +17,10 @@
 body{
   min-height:100vh;
   color:#fff;
-  font-family:
-    "Arial Rounded MT Bold",
-    "Hiragino Kaku Gothic ProN",
-    "Yu Gothic",
-    Meiryo,
-    sans-serif;
+  font-family:"Arial Rounded MT Bold","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
   background:#050914;
   overflow-x:hidden;
+  text-align:center;
 }
 
 #bgLayer{
@@ -34,7 +30,7 @@ body{
   background-size:cover;
   background-position:center top;
   background-repeat:no-repeat;
-  filter:brightness(1.02) contrast(1.08) saturate(1.22);
+  filter:brightness(1.04) contrast(1.08) saturate(1.22);
   animation:bgZoom 90s ease-in-out infinite alternate;
   transition:background-image 1s ease;
 }
@@ -49,14 +45,13 @@ body::before{
   position:fixed;
   inset:0;
   z-index:-2;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,.04) 0%,
-      rgba(0,0,0,.12) 30%,
-      rgba(0,8,18,.48) 68%,
-      rgba(0,8,18,.82) 100%
-    );
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.03) 0%,
+    rgba(0,0,0,.11) 30%,
+    rgba(0,8,18,.45) 68%,
+    rgba(0,8,18,.78) 100%
+  );
   pointer-events:none;
 }
 
@@ -64,7 +59,7 @@ body::before{
   width:100%;
   max-width:520px;
   margin:0 auto;
-  padding:20px 16px 88px;
+  padding:20px 16px 92px;
 }
 
 /* BGM */
@@ -83,18 +78,18 @@ body::before{
   border-radius:14px;
   border:1px solid #25eaff;
   background:rgba(0,15,28,.84);
-  color:#dfffff;
+  color:#eaffff;
   font-size:14px;
   font-weight:900;
-  text-shadow:0 0 5px #28eaff;
+  text-shadow:0 0 4px #28eaff;
   box-shadow:0 0 8px rgba(37,234,255,.45),inset 0 0 8px rgba(37,234,255,.12);
   backdrop-filter:blur(5px);
 }
 
 #bgmBtn.playing{
-  color:#caffea;
+  color:#dfffee;
   border-color:#00ff99;
-  text-shadow:0 0 5px #00ff99;
+  text-shadow:0 0 4px #00ff99;
 }
 
 .volume-box{
@@ -115,7 +110,7 @@ body::before{
   color:#fff4a8;
   font-size:13px;
   font-weight:900;
-  text-shadow:0 0 5px #ffe94d;
+  text-shadow:0 0 4px #ffe94d;
 }
 
 #volumeSlider{
@@ -135,12 +130,12 @@ body::before{
   font-size:18px;
   font-weight:900;
   letter-spacing:9px;
-  color:#dfffff;
+  color:#eaffff;
   line-height:1;
   text-shadow:
     0 0 2px #28eaff,
-    0 0 6px #28eaff,
-    0 0 12px #00aaff;
+    0 0 5px #28eaff,
+    0 0 10px rgba(0,170,255,.65);
 }
 
 .brand-main{
@@ -148,27 +143,25 @@ body::before{
   font-weight:900;
   letter-spacing:4px;
   line-height:.95;
-  color:#dfffff;
-  -webkit-text-stroke:1px rgba(40,234,255,.6);
+  color:#eaffff;
+  -webkit-text-stroke:1px rgba(40,234,255,.45);
   text-shadow:
-    0 0 3px #28eaff,
-    0 0 8px #28eaff,
-    0 0 16px #00bfff,
-    0 0 26px #00aaff;
+    0 0 2px #28eaff,
+    0 0 6px #28eaff,
+    0 0 12px rgba(0,191,255,.6);
 }
 
 .title{
   margin-top:8px;
   font-size:39px;
   font-weight:900;
-  color:#ffe5f5;
+  color:#ffe8f7;
   letter-spacing:2px;
-  -webkit-text-stroke:1px rgba(255,53,184,.8);
+  -webkit-text-stroke:1px rgba(255,53,184,.72);
   text-shadow:
-    0 0 3px #ff35b8,
-    0 0 8px #ff35b8,
-    0 0 16px #ff008c,
-    0 0 26px #ff008c;
+    0 0 2px #ff35b8,
+    0 0 6px #ff35b8,
+    0 0 12px rgba(255,0,140,.62);
 }
 
 /* PANELS */
@@ -179,8 +172,8 @@ body::before{
   border:1px solid rgba(40,234,255,.78);
   border-radius:22px;
   box-shadow:
-    0 0 10px rgba(40,234,255,.34),
-    inset 0 0 18px rgba(40,234,255,.06);
+    0 0 10px rgba(40,234,255,.32),
+    inset 0 0 16px rgba(40,234,255,.06);
   backdrop-filter:blur(8px);
   overflow:hidden;
 }
@@ -191,7 +184,7 @@ body::before{
   position:absolute;
   width:46px;
   height:24px;
-  border-color:rgba(255,255,255,.9);
+  border-color:rgba(255,255,255,.88);
   pointer-events:none;
 }
 
@@ -220,34 +213,37 @@ body::before{
   font-weight:900;
   margin-bottom:18px;
   color:#f7ffff;
-  text-shadow:0 0 4px rgba(255,255,255,.55);
+  text-align:center;
+  text-shadow:0 0 4px rgba(255,255,255,.5);
 }
 
 .current-time span{
-  color:#dfffff;
+  color:#eaffff;
   margin-right:8px;
-  -webkit-text-stroke:.5px rgba(40,234,255,.75);
-  text-shadow:0 0 4px #28eaff,0 0 9px #00aaff;
+  -webkit-text-stroke:.5px rgba(40,234,255,.65);
+  text-shadow:0 0 4px #28eaff,0 0 8px rgba(0,170,255,.65);
 }
 
 .timer-box{
   padding:22px 10px;
   border-radius:18px;
   margin-bottom:18px;
-  background:rgba(0,15,24,.42);
+  background:rgba(0,15,24,.43);
   box-shadow:inset 0 0 18px rgba(0,0,0,.32);
+  text-align:center;
 }
 
 .status{
   font-size:31px;
   font-weight:900;
-  color:#dfffff;
+  color:#eaffff;
   margin-bottom:8px;
-  -webkit-text-stroke:.7px rgba(40,234,255,.8);
+  text-align:center;
+  -webkit-text-stroke:.7px rgba(40,234,255,.65);
   text-shadow:
-    0 0 4px #28eaff,
-    0 0 9px #28eaff,
-    0 0 16px #00aaff;
+    0 0 3px #28eaff,
+    0 0 7px rgba(40,234,255,.78),
+    0 0 12px rgba(0,170,255,.55);
 }
 
 .countdown{
@@ -255,13 +251,13 @@ body::before{
   font-weight:900;
   line-height:1;
   letter-spacing:1px;
-  color:#fff0a6;
-  -webkit-text-stroke:1px rgba(255,196,0,.75);
+  color:#fff4b8;
+  text-align:center;
+  -webkit-text-stroke:1px rgba(255,196,0,.55);
   text-shadow:
-    0 0 4px #ffd84d,
-    0 0 10px #ffd84d,
-    0 0 18px #ffb700,
-    0 0 28px #ffb700;
+    0 0 3px #ffd84d,
+    0 0 8px rgba(255,216,77,.72),
+    0 0 14px rgba(255,183,0,.55);
 }
 
 /* PROGRESS */
@@ -281,15 +277,16 @@ body::before{
   width:0%;
   border-radius:999px;
   background:linear-gradient(90deg,#00eaff 0%,#00ff99 42%,#ffe600 76%,#ff3030 100%);
-  box-shadow:0 0 8px rgba(255,216,77,.65);
+  box-shadow:0 0 7px rgba(255,216,77,.58);
   transition:width .5s linear;
 }
 
 .progress-text{
   font-size:18px;
   font-weight:900;
-  color:#caffea;
-  text-shadow:0 0 4px #00ff99,0 0 9px #00ff99;
+  color:#dfffee;
+  text-align:center;
+  text-shadow:0 0 3px #00ff99,0 0 7px rgba(0,255,153,.7);
   margin-bottom:14px;
 }
 
@@ -298,9 +295,13 @@ body::before{
 .next-time{
   font-size:27px;
   font-weight:900;
-  color:#dfffff;
-  -webkit-text-stroke:.7px rgba(40,234,255,.8);
-  text-shadow:0 0 4px #28eaff,0 0 10px #28eaff,0 0 18px #00aaff;
+  color:#eaffff;
+  text-align:center;
+  -webkit-text-stroke:.7px rgba(40,234,255,.65);
+  text-shadow:
+    0 0 3px #28eaff,
+    0 0 7px rgba(40,234,255,.72),
+    0 0 12px rgba(0,170,255,.55);
 }
 
 #nextHourText{
@@ -309,6 +310,7 @@ body::before{
   font-size:54px;
   font-weight:900;
   letter-spacing:1px;
+  text-align:center;
 }
 
 #remainingText{
@@ -316,13 +318,14 @@ body::before{
   font-size:22px;
   font-weight:900;
   color:#fff;
-  text-shadow:0 0 4px rgba(255,255,255,.55);
+  text-align:center;
+  text-shadow:0 0 4px rgba(255,255,255,.5);
 }
 
 #remainingText span{
-  color:#fff0a6;
-  -webkit-text-stroke:.6px rgba(255,196,0,.65);
-  text-shadow:0 0 5px #ffd84d,0 0 10px #ffb700;
+  color:#fff4b8;
+  -webkit-text-stroke:.5px rgba(255,196,0,.45);
+  text-shadow:0 0 4px #ffd84d,0 0 8px rgba(255,183,0,.62);
 }
 
 /* SCHEDULE */
@@ -333,13 +336,16 @@ body::before{
 }
 
 .schedule h2{
-  color:#dfffff;
+  color:#eaffff;
   font-size:27px;
   font-weight:900;
   margin-bottom:18px;
   text-align:center;
-  -webkit-text-stroke:.7px rgba(40,234,255,.8);
-  text-shadow:0 0 4px #28eaff,0 0 10px #28eaff,0 0 18px #00aaff;
+  -webkit-text-stroke:.6px rgba(40,234,255,.6);
+  text-shadow:
+    0 0 3px #28eaff,
+    0 0 7px rgba(40,234,255,.68),
+    0 0 12px rgba(0,170,255,.5);
 }
 
 .time-list{
@@ -351,7 +357,7 @@ body::before{
 .time-item{
   padding:14px 6px;
   border-radius:14px;
-  background:rgba(3,12,22,.58);
+  background:rgba(3,12,22,.6);
   border:1px solid rgba(255,255,255,.25);
   font-size:22px;
   font-weight:900;
@@ -368,6 +374,7 @@ body::before{
   padding:16px;
   font-size:15px;
   line-height:1.7;
+  text-align:left;
 }
 
 /* READY */
@@ -375,14 +382,14 @@ body::before{
 .ready-panel{
   border:1px solid #00ff99 !important;
   box-shadow:
-    0 0 12px #00ff99,
-    0 0 24px rgba(0,255,153,.7),
-    inset 0 0 18px rgba(0,255,153,.22);
+    0 0 10px #00ff99,
+    0 0 20px rgba(0,255,153,.65),
+    inset 0 0 16px rgba(0,255,153,.2);
   animation:panelPulse 1s infinite;
 }
 
 @keyframes panelPulse{
-  50%{filter:brightness(1.2)}
+  50%{filter:brightness(1.15)}
 }
 
 .ready-overlay{
@@ -410,26 +417,26 @@ body::before{
   font-size:38px;
   font-weight:900;
   text-align:center;
-  box-shadow:0 0 18px #00ff99,0 0 42px rgba(0,255,153,.55);
-  text-shadow:0 0 10px #00ff99;
+  box-shadow:0 0 16px #00ff99,0 0 34px rgba(0,255,153,.52);
+  text-shadow:0 0 8px #00ff99;
 }
 
 .warning{
-  color:#fff0a6 !important;
-  text-shadow:0 0 10px #ffd84d !important;
+  color:#fff4b8 !important;
+  text-shadow:0 0 8px #ffd84d !important;
 }
 
 .danger{
   color:#fff !important;
-  -webkit-text-stroke:.7px #ff4d4d;
-  text-shadow:0 0 10px #ff4d4d !important;
+  -webkit-text-stroke:.6px #ff4d4d;
+  text-shadow:0 0 8px #ff4d4d !important;
   animation:blink .8s infinite;
 }
 
 .ready{
   color:#eafff5 !important;
-  -webkit-text-stroke:.7px #00ff99;
-  text-shadow:0 0 10px #00ff99,0 0 20px #00ff99 !important;
+  -webkit-text-stroke:.6px #00ff99;
+  text-shadow:0 0 8px #00ff99,0 0 16px #00ff99 !important;
   animation:pulse .8s infinite;
 }
 
@@ -444,7 +451,7 @@ body::before{
 @keyframes pulse{50%{transform:scale(1.04)}}
 
 @media(max-width:420px){
-  .app{padding:18px 16px 90px}
+  .app{padding:18px 16px 96px}
   .sound-panel{top:70px;right:10px;width:126px}
   #bgmBtn{height:44px;font-size:13px}
   .brand-small{font-size:18px}
@@ -668,14 +675,14 @@ function createTimeList(activeHour){
     item.textContent = pad(hour) + ":00";
 
     item.style.color = timeColors[hour];
-    item.style.textShadow = "0 0 6px " + timeColors[hour];
+    item.style.textShadow = "0 0 3px " + timeColors[hour];
 
     if(hour === activeHour){
       item.classList.add("active");
       item.style.borderColor = timeColors[hour];
       item.style.boxShadow =
         "0 0 8px " + timeColors[hour] +
-        ", inset 0 0 8px rgba(255,255,255,.07)";
+        ", inset 0 0 8px rgba(255,255,255,.06)";
     }
 
     list.appendChild(item);
@@ -789,7 +796,7 @@ function updateTimer(){
 
   const nextHourText = document.getElementById("nextHourText");
   nextHourText.style.color = timeColors[displayHour];
-  nextHourText.style.textShadow = "0 0 8px " + timeColors[displayHour];
+  nextHourText.style.textShadow = "0 0 4px " + timeColors[displayHour];
 
   createTimeList(displayHour);
 }
