@@ -34,14 +34,14 @@ body{
   background-size:cover;
   background-position:center top;
   background-repeat:no-repeat;
-  filter:brightness(1.05) contrast(1.12) saturate(1.28);
+  filter:brightness(1.02) contrast(1.08) saturate(1.22);
   animation:bgZoom 90s ease-in-out infinite alternate;
   transition:background-image 1s ease;
 }
 
 @keyframes bgZoom{
   from{transform:scale(1)}
-  to{transform:scale(1.035)}
+  to{transform:scale(1.03)}
 }
 
 body::before{
@@ -52,10 +52,10 @@ body::before{
   background:
     linear-gradient(
       to bottom,
-      rgba(0,0,0,.02) 0%,
-      rgba(0,0,0,.08) 28%,
-      rgba(0,8,18,.42) 68%,
-      rgba(0,8,18,.76) 100%
+      rgba(0,0,0,.04) 0%,
+      rgba(0,0,0,.12) 30%,
+      rgba(0,8,18,.48) 68%,
+      rgba(0,8,18,.82) 100%
     );
   pointer-events:none;
 }
@@ -64,7 +64,7 @@ body::before{
   width:100%;
   max-width:520px;
   margin:0 auto;
-  padding:22px 16px 48px;
+  padding:20px 16px 88px;
 }
 
 /* BGM */
@@ -72,35 +72,37 @@ body::before{
 .sound-panel{
   position:fixed;
   top:72px;
-  right:14px;
+  right:12px;
   z-index:999;
-  width:140px;
+  width:132px;
 }
 
 #bgmBtn{
   width:100%;
-  height:50px;
+  height:46px;
   border-radius:14px;
   border:1px solid #25eaff;
-  background:rgba(0,15,28,.78);
-  color:#33f5ff;
-  font-size:15px;
+  background:rgba(0,15,28,.84);
+  color:#dfffff;
+  font-size:14px;
   font-weight:900;
-  box-shadow:0 0 10px rgba(37,234,255,.55),inset 0 0 10px rgba(37,234,255,.14);
+  text-shadow:0 0 5px #28eaff;
+  box-shadow:0 0 8px rgba(37,234,255,.45),inset 0 0 8px rgba(37,234,255,.12);
   backdrop-filter:blur(5px);
 }
 
 #bgmBtn.playing{
-  color:#00ff99;
+  color:#caffea;
   border-color:#00ff99;
+  text-shadow:0 0 5px #00ff99;
 }
 
 .volume-box{
   display:none;
-  margin-top:10px;
+  margin-top:8px;
   padding:10px;
   border-radius:14px;
-  background:rgba(0,15,28,.78);
+  background:rgba(0,15,28,.84);
   border:1px solid rgba(37,234,255,.65);
   backdrop-filter:blur(5px);
 }
@@ -110,10 +112,10 @@ body::before{
 .bgm-label{
   text-align:center;
   margin-bottom:8px;
-  color:#ffe94d;
+  color:#fff4a8;
   font-size:13px;
   font-weight:900;
-  text-shadow:0 0 7px #ffe94d;
+  text-shadow:0 0 5px #ffe94d;
 }
 
 #volumeSlider{
@@ -130,54 +132,56 @@ body::before{
 }
 
 .brand-small{
-  font-size:20px;
+  font-size:18px;
   font-weight:900;
   letter-spacing:9px;
-  color:#28eaff;
+  color:#dfffff;
   line-height:1;
   text-shadow:
-    0 0 3px #28eaff,
-    0 0 8px #28eaff,
-    0 0 18px #00aaff;
+    0 0 2px #28eaff,
+    0 0 6px #28eaff,
+    0 0 12px #00aaff;
 }
 
 .brand-main{
-  font-size:58px;
+  font-size:54px;
   font-weight:900;
   letter-spacing:4px;
   line-height:.95;
-  color:#28eaff;
+  color:#dfffff;
+  -webkit-text-stroke:1px rgba(40,234,255,.6);
   text-shadow:
-    0 0 4px #28eaff,
-    0 0 10px #28eaff,
-    0 0 22px #00bfff,
-    0 0 38px #00aaff;
+    0 0 3px #28eaff,
+    0 0 8px #28eaff,
+    0 0 16px #00bfff,
+    0 0 26px #00aaff;
 }
 
 .title{
   margin-top:8px;
-  font-size:43px;
+  font-size:39px;
   font-weight:900;
-  color:#ff35b8;
+  color:#ffe5f5;
   letter-spacing:2px;
+  -webkit-text-stroke:1px rgba(255,53,184,.8);
   text-shadow:
     0 0 3px #ff35b8,
-    0 0 9px #ff35b8,
-    0 0 20px #ff008c,
-    0 0 34px #ff008c;
+    0 0 8px #ff35b8,
+    0 0 16px #ff008c,
+    0 0 26px #ff008c;
 }
 
 /* PANELS */
 
 .panel{
   position:relative;
-  background:rgba(0,10,20,.46);
+  background:rgba(0,10,20,.58);
   border:1px solid rgba(40,234,255,.78);
   border-radius:22px;
   box-shadow:
-    0 0 14px rgba(40,234,255,.42),
-    inset 0 0 18px rgba(40,234,255,.07);
-  backdrop-filter:blur(7px);
+    0 0 10px rgba(40,234,255,.34),
+    inset 0 0 18px rgba(40,234,255,.06);
+  backdrop-filter:blur(8px);
   overflow:hidden;
 }
 
@@ -187,7 +191,7 @@ body::before{
   position:absolute;
   width:46px;
   height:24px;
-  border-color:rgba(255,255,255,.95);
+  border-color:rgba(255,255,255,.9);
   pointer-events:none;
 }
 
@@ -215,45 +219,49 @@ body::before{
   font-size:21px;
   font-weight:900;
   margin-bottom:18px;
-  text-shadow:0 0 5px rgba(255,255,255,.65);
+  color:#f7ffff;
+  text-shadow:0 0 4px rgba(255,255,255,.55);
 }
 
 .current-time span{
-  color:#28eaff;
+  color:#dfffff;
   margin-right:8px;
-  text-shadow:0 0 5px #28eaff,0 0 12px #00aaff;
+  -webkit-text-stroke:.5px rgba(40,234,255,.75);
+  text-shadow:0 0 4px #28eaff,0 0 9px #00aaff;
 }
 
 .timer-box{
   padding:22px 10px;
   border-radius:18px;
   margin-bottom:18px;
-  background:rgba(0,15,24,.34);
-  box-shadow:inset 0 0 22px rgba(0,0,0,.26);
+  background:rgba(0,15,24,.42);
+  box-shadow:inset 0 0 18px rgba(0,0,0,.32);
 }
 
 .status{
-  font-size:33px;
+  font-size:31px;
   font-weight:900;
-  color:#28eaff;
+  color:#dfffff;
   margin-bottom:8px;
+  -webkit-text-stroke:.7px rgba(40,234,255,.8);
   text-shadow:
     0 0 4px #28eaff,
-    0 0 10px #28eaff,
-    0 0 20px #00aaff;
+    0 0 9px #28eaff,
+    0 0 16px #00aaff;
 }
 
 .countdown{
-  font-size:60px;
+  font-size:52px;
   font-weight:900;
   line-height:1;
   letter-spacing:1px;
-  color:#ffd84d;
+  color:#fff0a6;
+  -webkit-text-stroke:1px rgba(255,196,0,.75);
   text-shadow:
     0 0 4px #ffd84d,
-    0 0 11px #ffd84d,
-    0 0 22px #ffb700,
-    0 0 34px #ffb700;
+    0 0 10px #ffd84d,
+    0 0 18px #ffb700,
+    0 0 28px #ffb700;
 }
 
 /* PROGRESS */
@@ -273,46 +281,48 @@ body::before{
   width:0%;
   border-radius:999px;
   background:linear-gradient(90deg,#00eaff 0%,#00ff99 42%,#ffe600 76%,#ff3030 100%);
-  box-shadow:0 0 12px rgba(255,216,77,.85);
+  box-shadow:0 0 8px rgba(255,216,77,.65);
   transition:width .5s linear;
 }
 
 .progress-text{
   font-size:18px;
   font-weight:900;
-  color:#00ff99;
-  text-shadow:0 0 5px #00ff99,0 0 12px #00ff99;
+  color:#caffea;
+  text-shadow:0 0 4px #00ff99,0 0 9px #00ff99;
   margin-bottom:14px;
 }
 
 /* NEXT */
 
 .next-time{
-  font-size:28px;
+  font-size:27px;
   font-weight:900;
-  color:#28eaff;
-  text-shadow:0 0 5px #28eaff,0 0 12px #28eaff,0 0 24px #00aaff;
+  color:#dfffff;
+  -webkit-text-stroke:.7px rgba(40,234,255,.8);
+  text-shadow:0 0 4px #28eaff,0 0 10px #28eaff,0 0 18px #00aaff;
 }
 
 #nextHourText{
   display:block;
   margin-top:6px;
-  font-size:58px;
+  font-size:54px;
   font-weight:900;
   letter-spacing:1px;
 }
 
 #remainingText{
   margin-top:3px;
-  font-size:23px;
+  font-size:22px;
   font-weight:900;
   color:#fff;
-  text-shadow:0 0 5px rgba(255,255,255,.68);
+  text-shadow:0 0 4px rgba(255,255,255,.55);
 }
 
 #remainingText span{
-  color:#ffd84d;
-  text-shadow:0 0 6px #ffd84d,0 0 14px #ffb700;
+  color:#fff0a6;
+  -webkit-text-stroke:.6px rgba(255,196,0,.65);
+  text-shadow:0 0 5px #ffd84d,0 0 10px #ffb700;
 }
 
 /* SCHEDULE */
@@ -323,12 +333,13 @@ body::before{
 }
 
 .schedule h2{
-  color:#28eaff;
-  font-size:29px;
+  color:#dfffff;
+  font-size:27px;
   font-weight:900;
   margin-bottom:18px;
   text-align:center;
-  text-shadow:0 0 5px #28eaff,0 0 12px #28eaff,0 0 24px #00aaff;
+  -webkit-text-stroke:.7px rgba(40,234,255,.8);
+  text-shadow:0 0 4px #28eaff,0 0 10px #28eaff,0 0 18px #00aaff;
 }
 
 .time-list{
@@ -340,7 +351,7 @@ body::before{
 .time-item{
   padding:14px 6px;
   border-radius:14px;
-  background:rgba(3,12,22,.52);
+  background:rgba(3,12,22,.58);
   border:1px solid rgba(255,255,255,.25);
   font-size:22px;
   font-weight:900;
@@ -364,14 +375,14 @@ body::before{
 .ready-panel{
   border:1px solid #00ff99 !important;
   box-shadow:
-    0 0 14px #00ff99,
-    0 0 28px rgba(0,255,153,.75),
+    0 0 12px #00ff99,
+    0 0 24px rgba(0,255,153,.7),
     inset 0 0 18px rgba(0,255,153,.22);
   animation:panelPulse 1s infinite;
 }
 
 @keyframes panelPulse{
-  50%{filter:brightness(1.25)}
+  50%{filter:brightness(1.2)}
 }
 
 .ready-overlay{
@@ -395,28 +406,30 @@ body::before{
   border-radius:22px;
   background:rgba(0,30,20,.9);
   border:2px solid #00ff99;
-  color:#00ff99;
+  color:#eafff5;
   font-size:38px;
   font-weight:900;
   text-align:center;
-  box-shadow:0 0 20px #00ff99,0 0 48px rgba(0,255,153,.58);
-  text-shadow:0 0 14px #00ff99;
+  box-shadow:0 0 18px #00ff99,0 0 42px rgba(0,255,153,.55);
+  text-shadow:0 0 10px #00ff99;
 }
 
 .warning{
-  color:#ffd84d !important;
-  text-shadow:0 0 14px #ffd84d !important;
+  color:#fff0a6 !important;
+  text-shadow:0 0 10px #ffd84d !important;
 }
 
 .danger{
-  color:#ff4d4d !important;
-  text-shadow:0 0 14px #ff4d4d !important;
+  color:#fff !important;
+  -webkit-text-stroke:.7px #ff4d4d;
+  text-shadow:0 0 10px #ff4d4d !important;
   animation:blink .8s infinite;
 }
 
 .ready{
-  color:#00ff99 !important;
-  text-shadow:0 0 14px #00ff99,0 0 28px #00ff99 !important;
+  color:#eafff5 !important;
+  -webkit-text-stroke:.7px #00ff99;
+  text-shadow:0 0 10px #00ff99,0 0 20px #00ff99 !important;
   animation:pulse .8s infinite;
 }
 
@@ -428,18 +441,19 @@ body::before{
 }
 
 @keyframes blink{50%{opacity:.35}}
-@keyframes pulse{50%{transform:scale(1.05)}}
+@keyframes pulse{50%{transform:scale(1.04)}}
 
 @media(max-width:420px){
-  .app{padding:18px 16px 46px}
-  .sound-panel{top:70px;right:10px;width:132px}
-  .brand-small{font-size:19px}
-  .brand-main{font-size:52px}
-  .title{font-size:40px}
-  .status{font-size:31px}
-  .countdown{font-size:54px}
-  #nextHourText{font-size:54px}
-  .time-item{font-size:21px}
+  .app{padding:18px 16px 90px}
+  .sound-panel{top:70px;right:10px;width:126px}
+  #bgmBtn{height:44px;font-size:13px}
+  .brand-small{font-size:18px}
+  .brand-main{font-size:48px}
+  .title{font-size:37px}
+  .status{font-size:29px}
+  .countdown{font-size:48px}
+  #nextHourText{font-size:50px}
+  .time-item{font-size:20px}
 }
 </style>
 </head>
@@ -654,14 +668,14 @@ function createTimeList(activeHour){
     item.textContent = pad(hour) + ":00";
 
     item.style.color = timeColors[hour];
-    item.style.textShadow = "0 0 8px " + timeColors[hour];
+    item.style.textShadow = "0 0 6px " + timeColors[hour];
 
     if(hour === activeHour){
       item.classList.add("active");
       item.style.borderColor = timeColors[hour];
       item.style.boxShadow =
-        "0 0 10px " + timeColors[hour] +
-        ", inset 0 0 10px rgba(255,255,255,.07)";
+        "0 0 8px " + timeColors[hour] +
+        ", inset 0 0 8px rgba(255,255,255,.07)";
     }
 
     list.appendChild(item);
@@ -775,7 +789,7 @@ function updateTimer(){
 
   const nextHourText = document.getElementById("nextHourText");
   nextHourText.style.color = timeColors[displayHour];
-  nextHourText.style.textShadow = "0 0 12px " + timeColors[displayHour];
+  nextHourText.style.textShadow = "0 0 8px " + timeColors[displayHour];
 
   createTimeList(displayHour);
 }
