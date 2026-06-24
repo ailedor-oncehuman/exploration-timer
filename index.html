@@ -38,14 +38,14 @@ body{
   background-size:cover;
   background-position:center top;
   background-repeat:no-repeat;
-  filter:brightness(1.08) contrast(1.18) saturate(1.38);
+  filter:brightness(1.02) contrast(1.1) saturate(1.25);
   transition:background-image 1s ease;
-  animation:bgZoom 95s ease-in-out infinite alternate;
+  animation:bgZoom 90s ease-in-out infinite alternate;
 }
 
 @keyframes bgZoom{
   from{transform:scale(1)}
-  to{transform:scale(1.045)}
+  to{transform:scale(1.035)}
 }
 
 body::before{
@@ -57,43 +57,26 @@ body::before{
   background:
     linear-gradient(
       to bottom,
-      rgba(0,0,0,.02) 0%,
-      rgba(0,0,0,.08) 25%,
-      rgba(0,8,18,.45) 70%,
-      rgba(0,8,18,.75) 100%
+      rgba(0,0,0,.03) 0%,
+      rgba(0,0,0,.08) 26%,
+      rgba(0,8,18,.42) 70%,
+      rgba(0,8,18,.72) 100%
     ),
-    radial-gradient(circle at top,rgba(0,234,255,.14),transparent 46%);
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(255,255,255,.035) 0px,
-      rgba(255,255,255,.035) 1px,
-      transparent 2px,
-      transparent 5px
-    );
-  opacity:.18;
+    radial-gradient(circle at top,rgba(0,234,255,.11),transparent 48%);
 }
 
 .app{
   width:100%;
   max-width:520px;
   margin:0 auto;
-  padding:22px 16px 34px;
+  padding:22px 16px 44px;
 }
 
 /* ===== BGM PANEL ===== */
 
 .sound-panel{
   position:fixed;
-  top:72px;
+  top:70px;
   right:14px;
   z-index:999;
   width:138px;
@@ -104,16 +87,16 @@ body::after{
 }
 
 #bgmBtn{
-  height:50px;
+  height:48px;
   border-radius:14px;
-  border:1px solid rgba(40,234,255,.95);
-  background:rgba(3,16,28,.78);
+  border:1px solid rgba(40,234,255,.9);
+  background:rgba(3,16,28,.76);
   color:#28EAFF;
   font-size:15px;
   font-weight:900;
   box-shadow:
-    0 0 14px rgba(40,234,255,.55),
-    inset 0 0 16px rgba(40,234,255,.13);
+    0 0 10px rgba(40,234,255,.48),
+    inset 0 0 12px rgba(40,234,255,.1);
   backdrop-filter:blur(5px);
 }
 
@@ -121,18 +104,16 @@ body::after{
   color:#00ff99;
   border-color:#00ff99;
   box-shadow:
-    0 0 18px rgba(0,255,153,.7),
-    inset 0 0 16px rgba(0,255,153,.16);
+    0 0 12px rgba(0,255,153,.58),
+    inset 0 0 12px rgba(0,255,153,.12);
 }
 
 .volume-box{
   padding:10px 10px 12px;
   border-radius:14px;
   background:rgba(3,16,28,.78);
-  border:1px solid rgba(40,234,255,.7);
-  box-shadow:
-    0 0 14px rgba(40,234,255,.42),
-    inset 0 0 12px rgba(40,234,255,.09);
+  border:1px solid rgba(40,234,255,.62);
+  box-shadow:0 0 12px rgba(40,234,255,.35);
   backdrop-filter:blur(5px);
   display:none;
 }
@@ -147,7 +128,7 @@ body::after{
   color:#ffe94d;
   margin-bottom:8px;
   text-align:center;
-  text-shadow:0 0 10px #ffe94d;
+  text-shadow:0 0 8px #ffe94d;
 }
 
 #volumeSlider{
@@ -155,62 +136,61 @@ body::after{
   accent-color:#00ff99;
 }
 
-/* ===== HEADER LOGO ===== */
+/* ===== HEADER ===== */
 
 .header{
   text-align:center;
-  padding-top:12px;
-  margin-bottom:14px;
+  padding-top:10px;
+  margin-bottom:12px;
 }
 
 .brand{
-  font-size:22px;
+  font-size:20px;
   font-weight:900;
   letter-spacing:9px;
   color:#28EAFF;
   line-height:1;
   text-shadow:
-    0 0 6px #28EAFF,
-    0 0 14px #28EAFF,
-    0 0 28px #00AFFF,
-    0 0 56px #00AFFF;
+    0 0 4px #28EAFF,
+    0 0 10px #28EAFF,
+    0 0 22px #00AFFF;
 }
 
 .brand-main{
-  font-size:62px;
+  font-size:58px;
   font-weight:900;
   letter-spacing:4px;
   line-height:.95;
   color:#28EAFF;
   text-shadow:
-    0 0 8px #28EAFF,
-    0 0 18px #28EAFF,
-    0 0 34px #00D9FF,
-    0 0 70px #00AFFF;
+    0 0 5px #28EAFF,
+    0 0 12px #28EAFF,
+    0 0 24px #00D9FF,
+    0 0 42px #00AFFF;
 }
 
 .title{
   margin-top:8px;
-  font-size:48px;
+  font-size:44px;
   font-weight:900;
   letter-spacing:2px;
   color:#ff35b8;
   text-shadow:
-    0 0 6px #ff35b8,
-    0 0 14px #ff35b8,
-    0 0 28px #ff008c,
-    0 0 60px #ff008c;
+    0 0 4px #ff35b8,
+    0 0 10px #ff35b8,
+    0 0 22px #ff008c,
+    0 0 36px #ff008c;
 }
 
-/* ===== FUTURE PANELS ===== */
+/* ===== PANELS ===== */
 
 .panel{
   position:relative;
-  background:rgba(0,10,20,.34);
+  background:rgba(0,10,20,.43);
   border:1px solid rgba(40,234,255,.72);
   box-shadow:
-    0 0 18px rgba(40,234,255,.42),
-    inset 0 0 20px rgba(40,234,255,.07);
+    0 0 14px rgba(40,234,255,.38),
+    inset 0 0 18px rgba(40,234,255,.06);
   backdrop-filter:blur(7px);
   overflow:hidden;
 }
@@ -219,9 +199,9 @@ body::after{
 .panel::after{
   content:"";
   position:absolute;
-  width:52px;
-  height:26px;
-  border-color:rgba(40,234,255,.9);
+  width:46px;
+  height:24px;
+  border-color:rgba(255,255,255,.9);
   pointer-events:none;
 }
 
@@ -230,7 +210,7 @@ body::after{
   top:10px;
   border-left:2px solid;
   border-top:2px solid;
-  border-radius:18px 0 0 0;
+  border-radius:16px 0 0 0;
 }
 
 .panel::after{
@@ -238,96 +218,90 @@ body::after{
   bottom:10px;
   border-right:2px solid;
   border-bottom:2px solid;
-  border-radius:0 0 18px 0;
+  border-radius:0 0 16px 0;
 }
 
 .card{
-  margin-top:8px;
+  margin-top:10px;
   padding:22px 18px 24px;
   border-radius:22px;
 }
 
 .current-time{
-  font-size:22px;
+  font-size:21px;
   font-weight:900;
   margin-bottom:18px;
   color:#fff;
   text-shadow:
-    0 0 6px rgba(255,255,255,.65),
-    0 0 14px rgba(255,255,255,.35);
+    0 0 5px rgba(255,255,255,.65),
+    0 0 10px rgba(255,255,255,.32);
 }
 
 .current-time span{
   color:#28EAFF;
   margin-right:8px;
   text-shadow:
-    0 0 8px #28EAFF,
-    0 0 18px #00AFFF;
+    0 0 5px #28EAFF,
+    0 0 12px #00AFFF;
 }
 
 .timer-box{
-  padding:24px 10px 24px;
+  padding:22px 10px;
   border-radius:18px;
   margin-bottom:18px;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,16,26,.24),
-      rgba(0,16,26,.42)
-    );
-  box-shadow:inset 0 0 28px rgba(0,0,0,.28);
+  background:rgba(0,15,24,.32);
+  box-shadow:inset 0 0 22px rgba(0,0,0,.24);
 }
 
 .status{
-  font-size:36px;
+  font-size:34px;
   font-weight:900;
   color:#28EAFF;
   text-shadow:
-    0 0 6px #28EAFF,
-    0 0 14px #28EAFF,
-    0 0 26px #00AFFF,
-    0 0 54px #00AFFF;
+    0 0 5px #28EAFF,
+    0 0 12px #28EAFF,
+    0 0 22px #00AFFF;
   margin-bottom:8px;
 }
 
 .countdown{
-  font-size:68px;
+  font-size:62px;
   font-weight:900;
   color:#ffd84d;
-  letter-spacing:2px;
+  letter-spacing:1px;
   line-height:1;
   text-shadow:
-    0 0 6px #FFD45C,
-    0 0 14px #FFD45C,
-    0 0 28px #FFB700,
-    0 0 58px #FFB700;
+    0 0 5px #FFD45C,
+    0 0 12px #FFD45C,
+    0 0 24px #FFB700,
+    0 0 38px #FFB700;
 }
 
 .ready-panel{
   border:1px solid #00ff99 !important;
   box-shadow:
-    0 0 16px #00ff99,
-    0 0 34px #00ff99,
-    inset 0 0 20px rgba(0,255,153,.25);
+    0 0 14px #00ff99,
+    0 0 28px rgba(0,255,153,.75),
+    inset 0 0 18px rgba(0,255,153,.22);
   animation:panelPulse 1s infinite;
 }
 
 @keyframes panelPulse{
-  50%{filter:brightness(1.35)}
+  50%{filter:brightness(1.25)}
 }
 
 /* ===== PROGRESS ===== */
 
 .progress-wrap{
   margin:18px 0 8px;
-  height:22px;
+  height:20px;
   border-radius:999px;
   background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.3);
+  border:1px solid rgba(255,255,255,.28);
   overflow:hidden;
   box-shadow:
-    inset 0 0 10px rgba(0,0,0,.55),
-    0 0 10px rgba(40,234,255,.32);
+    inset 0 0 9px rgba(0,0,0,.48),
+    0 0 8px rgba(40,234,255,.28);
 }
 
 .progress-bar{
@@ -343,8 +317,8 @@ body::after{
       #ff3030 100%
     );
   box-shadow:
-    0 0 14px rgba(255,216,77,.95),
-    0 0 24px rgba(255,48,48,.55);
+    0 0 12px rgba(255,216,77,.85),
+    0 0 20px rgba(255,48,48,.42);
   transition:width .5s linear;
 }
 
@@ -353,47 +327,47 @@ body::after{
   font-weight:900;
   color:#00ff99;
   text-shadow:
-    0 0 6px #00ff99,
-    0 0 14px #00ff99;
-  margin-bottom:16px;
+    0 0 5px #00ff99,
+    0 0 12px #00ff99;
+  margin-bottom:14px;
 }
 
 /* ===== NEXT TIME ===== */
 
 .next-time{
-  font-size:30px;
+  font-size:29px;
   font-weight:900;
   color:#28EAFF;
   text-shadow:
-    0 0 6px #28EAFF,
-    0 0 14px #28EAFF,
-    0 0 30px #00AFFF;
+    0 0 5px #28EAFF,
+    0 0 12px #28EAFF,
+    0 0 24px #00AFFF;
   margin-top:8px;
 }
 
 #nextHourText{
   display:block;
   margin-top:6px;
-  font-size:64px;
+  font-size:60px;
   font-weight:900;
-  letter-spacing:2px;
+  letter-spacing:1px;
 }
 
 #remainingText{
-  margin-top:2px;
-  font-size:24px;
+  margin-top:3px;
+  font-size:23px;
   font-weight:900;
   color:#fff;
   text-shadow:
-    0 0 6px rgba(255,255,255,.7),
-    0 0 14px rgba(255,255,255,.35);
+    0 0 5px rgba(255,255,255,.7),
+    0 0 12px rgba(255,255,255,.3);
 }
 
 #remainingText span{
   color:#ffd84d;
   text-shadow:
-    0 0 8px #FFD45C,
-    0 0 18px #FFB700;
+    0 0 6px #FFD45C,
+    0 0 14px #FFB700;
 }
 
 /* ===== SCHEDULE ===== */
@@ -406,14 +380,14 @@ body::after{
 
 .schedule h2{
   color:#28EAFF;
-  font-size:30px;
+  font-size:29px;
   font-weight:900;
   margin-bottom:18px;
   text-align:center;
   text-shadow:
-    0 0 6px #28EAFF,
-    0 0 14px #28EAFF,
-    0 0 30px #00AFFF;
+    0 0 5px #28EAFF,
+    0 0 12px #28EAFF,
+    0 0 24px #00AFFF;
 }
 
 .time-list{
@@ -425,18 +399,18 @@ body::after{
 .time-item{
   padding:14px 6px;
   border-radius:14px;
-  background:rgba(3,12,22,.48);
-  border:1px solid rgba(255,255,255,.22);
+  background:rgba(3,12,22,.5);
+  border:1px solid rgba(255,255,255,.24);
   font-size:22px;
   font-weight:900;
   color:#fff;
   box-shadow:
-    inset 0 0 12px rgba(255,255,255,.05),
-    0 0 10px rgba(0,0,0,.28);
+    inset 0 0 10px rgba(255,255,255,.04),
+    0 0 8px rgba(0,0,0,.24);
 }
 
 .time-item.active{
-  transform:scale(1.05);
+  transform:scale(1.04);
 }
 
 /* ===== NOTE ===== */
@@ -458,7 +432,7 @@ body::after{
   display:none;
   justify-content:center;
   align-items:center;
-  background:rgba(0,20,12,.48);
+  background:rgba(0,20,12,.44);
   backdrop-filter:blur(3px);
 }
 
@@ -477,29 +451,29 @@ body::after{
   font-weight:900;
   text-align:center;
   box-shadow:
-    0 0 25px #00ff99,
-    0 0 60px rgba(0,255,153,.65);
-  text-shadow:0 0 18px #00ff99;
+    0 0 20px #00ff99,
+    0 0 48px rgba(0,255,153,.58);
+  text-shadow:0 0 14px #00ff99;
 }
 
 /* ===== STATES ===== */
 
 .warning{
   color:#ffd84d !important;
-  text-shadow:0 0 18px #ffd84d !important;
+  text-shadow:0 0 14px #ffd84d !important;
 }
 
 .danger{
   color:#ff4d4d !important;
-  text-shadow:0 0 18px #ff4d4d !important;
+  text-shadow:0 0 14px #ff4d4d !important;
   animation:blink .8s infinite;
 }
 
 .ready{
   color:#00ff99 !important;
   text-shadow:
-    0 0 18px #00ff99,
-    0 0 38px #00ff99 !important;
+    0 0 14px #00ff99,
+    0 0 28px #00ff99 !important;
   animation:pulse .8s infinite;
 }
 
@@ -511,16 +485,17 @@ body::after{
 }
 
 @keyframes blink{50%{opacity:.35}}
-@keyframes pulse{50%{transform:scale(1.06)}}
+@keyframes pulse{50%{transform:scale(1.05)}}
 
 @media(max-width:420px){
-  .app{padding:18px 16px 32px}
-  .sound-panel{top:72px;right:10px;width:132px}
-  .brand{font-size:20px}
-  .brand-main{font-size:56px}
-  .title{font-size:44px}
-  .countdown{font-size:60px}
-  #nextHourText{font-size:58px}
+  .app{padding:18px 16px 42px}
+  .sound-panel{top:70px;right:10px;width:132px}
+  .brand{font-size:19px}
+  .brand-main{font-size:52px}
+  .title{font-size:41px}
+  .status{font-size:31px}
+  .countdown{font-size:56px}
+  #nextHourText{font-size:56px}
   .time-item{font-size:21px}
 }
 </style>
@@ -736,14 +711,14 @@ function createTimeList(activeHour){
     item.textContent = pad(hour) + ":00";
 
     item.style.color = timeColors[hour];
-    item.style.textShadow = "0 0 10px " + timeColors[hour];
+    item.style.textShadow = "0 0 8px " + timeColors[hour];
 
     if(hour === activeHour){
       item.classList.add("active");
       item.style.borderColor = timeColors[hour];
       item.style.boxShadow =
-        "0 0 12px " + timeColors[hour] +
-        ", inset 0 0 12px rgba(255,255,255,.08)";
+        "0 0 10px " + timeColors[hour] +
+        ", inset 0 0 10px rgba(255,255,255,.07)";
     }
 
     list.appendChild(item);
@@ -857,7 +832,7 @@ function updateTimer(){
 
   const nextHourText = document.getElementById("nextHourText");
   nextHourText.style.color = timeColors[displayHour];
-  nextHourText.style.textShadow = "0 0 15px " + timeColors[displayHour];
+  nextHourText.style.textShadow = "0 0 12px " + timeColors[displayHour];
 
   createTimeList(displayHour);
 }
